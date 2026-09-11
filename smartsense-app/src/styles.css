@@ -1,0 +1,179 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SmartSense design tokens — warm, rounded, "wellness app" feel.
+ * Cards use soft shadows instead of hard borders; an original indigo/mint
+ * palette (not a literal clone of any other health app) drives the accents.
+ */
+
+@theme inline {
+  --font-display: "SmartSense Display", ui-rounded, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  /* warm, soft off-white canvas instead of stark clinical white/grey */
+  --background: oklch(0.975 0.008 85);
+  --foreground: oklch(0.24 0.03 275);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.03 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.03 275);
+
+  /* soft indigo — friendly, calm, distinct from a generic corporate navy */
+  --primary: oklch(0.56 0.15 280);
+  --primary-foreground: oklch(0.99 0.005 280);
+
+  --secondary: oklch(0.95 0.015 280);
+  --secondary-foreground: oklch(0.34 0.06 280);
+  --muted: oklch(0.955 0.012 85);
+  --muted-foreground: oklch(0.52 0.03 275);
+  --accent: oklch(0.93 0.03 280);
+  --accent-foreground: oklch(0.34 0.06 280);
+
+  /* fresh, friendly status colors */
+  --destructive: oklch(0.6 0.21 25);
+  --destructive-foreground: oklch(0.99 0.005 25);
+  --success: oklch(0.7 0.15 155);
+  --warning: oklch(0.79 0.15 75);
+
+  --border: oklch(0.92 0.012 280 / 60%);
+  --input: oklch(0.9 0.015 280);
+  --ring: oklch(0.62 0.1 280);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.24 0.03 275);
+  --sidebar-border: oklch(0.92 0.012 280 / 60%);
+
+  --gauge-track: oklch(0.93 0.015 280);
+  --map-line: oklch(0.86 0.02 280);
+
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 280 / 4%), 0 8px 24px -8px oklch(0.3 0.08 280 / 12%);
+  --shadow-soft-lg: 0 4px 10px oklch(0.3 0.05 280 / 5%), 0 16px 40px -12px oklch(0.3 0.1 280 / 16%);
+}
+
+.dark {
+  --background: oklch(0.17 0.02 275);
+  --foreground: oklch(0.95 0.01 250);
+  --card: oklch(0.22 0.025 275);
+  --card-foreground: oklch(0.95 0.01 250);
+  --popover: oklch(0.22 0.025 275);
+  --popover-foreground: oklch(0.95 0.01 250);
+  --primary: oklch(0.76 0.12 280);
+  --primary-foreground: oklch(0.18 0.03 280);
+  --secondary: oklch(0.28 0.03 275);
+  --secondary-foreground: oklch(0.92 0.01 250);
+  --muted: oklch(0.28 0.025 275);
+  --muted-foreground: oklch(0.68 0.02 260);
+  --accent: oklch(0.32 0.04 280);
+  --accent-foreground: oklch(0.92 0.01 250);
+  --destructive: oklch(0.68 0.19 22);
+  --destructive-foreground: oklch(0.97 0.005 250);
+  --success: oklch(0.72 0.14 155);
+  --warning: oklch(0.8 0.14 80);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.65 0.09 280);
+  --sidebar: oklch(0.2 0.025 275);
+  --sidebar-foreground: oklch(0.95 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --gauge-track: oklch(0.32 0.02 275);
+  --map-line: oklch(0.34 0.02 275);
+
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 20%), 0 8px 24px -8px oklch(0 0 0 / 35%);
+  --shadow-soft-lg: 0 4px 10px oklch(0 0 0 / 20%), 0 16px 40px -12px oklch(0 0 0 / 45%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 9999px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* soft card look used across the app: shadow instead of a hard border */
+.soft-card {
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.soft-card-lg {
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-soft-lg);
+}
+
+.signal-line {
+  animation: signal-scroll 6s linear infinite;
+}
+@keyframes signal-scroll {
+  0% { stroke-dasharray: 4 4; stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -40; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
